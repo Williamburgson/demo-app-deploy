@@ -8,4 +8,4 @@ images:
 - name: ghcr.io/<username>/demo-app
   newTag: latest
 - name: ghcr.io/williamburgson/demo-app
-  newTag: d1cb199ac421fa9be994195c7a0d208e8c391bc5
+  newTag: b5dc3b4386e01367484620575113ad43df7ecf05
