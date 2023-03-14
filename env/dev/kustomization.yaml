@@ -7,3 +7,5 @@ resources:
 images:
 - name: ghcr.io/<username>/demo-app
   newTag: latest
+- name: ghcr.io/williamburgson/demo-app
+  newTag: d1cb199ac421fa9be994195c7a0d208e8c391bc5
