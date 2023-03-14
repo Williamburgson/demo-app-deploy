@@ -3,3 +3,6 @@ kind: Kustomization
 
 resources:
 - ../../base
+images:
+- name: ghcr.io/williamburgson/demo-app
+  newTag: b5dc3b4386e01367484620575113ad43df7ecf05
