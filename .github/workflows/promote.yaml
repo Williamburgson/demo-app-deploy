@@ -35,20 +35,20 @@ jobs:
         run: |
           IMAGE=${{ steps.commit-metadata.outputs.IMAGE }}
           ENV="${{ steps.commit-metadata.outputs.ENV || 'dev' }}"
-          if [ $ENV == "dev" ]; then
-            echo "Promoting $IMAGE to stage"
-            cd env/stage && kustomize edit set image $IMAGE
-            git add .
-            git commit -m "chore(stage): promote to $IMAGE"
-            git notes append -m "image: $IMAGE"
-            git notes append -m "env: stage"
-            git push origin "refs/notes/*" --force && git push origin main
-          elif [ $ENV == "stage" ]; then
-            echo "Promoting $IMAGE to prod"
-            git checkout -b auto-promotion-prod
-            cd env/prod && kustomize edit set image $IMAGE
-            git add .
-            git commit -m "chore(prod): promote to $IMAGE"
-            git push origin auto-promotion-prod --force
-            gh pr create --title "chore(prod): promote to \`$IMAGE\`" --body "Promote \`prod\` to \`$IMAGE\`" --base main --head auto-promotion-prod
-          fi
+          # if [ $ENV == "dev" ]; then
+          #   echo "Promoting $IMAGE to stage"
+          #   cd env/stage && kustomize edit set image $IMAGE
+          #   git add .
+          #   git commit -m "chore(stage): promote to $IMAGE"
+          #   git notes append -m "image: $IMAGE"
+          #   git notes append -m "env: stage"
+          #   git push origin "refs/notes/*" --force && git push origin main
+          # elif [ $ENV == "stage" ]; then
+          #   echo "Promoting $IMAGE to prod"
+          #   git checkout -b auto-promotion-prod
+          #   cd env/prod && kustomize edit set image $IMAGE
+          #   git add .
+          #   git commit -m "chore(prod): promote to $IMAGE"
+          #   git push origin auto-promotion-prod --force
+          #   gh pr create --title "chore(prod): promote to \`$IMAGE\`" --body "Promote \`prod\` to \`$IMAGE\`" --base main --head auto-promotion-prod
+          # fi
